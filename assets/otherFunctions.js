@@ -1,8 +1,19 @@
 function createAnswerBox(...answers) {
+    /* Creates a FlexBox Container with Answer Buttons */
+
     const answerContainer = document.createElement('div');
           answerContainer.classList.add('answerBox');
-          answerContainer.style.display = 'flex';          //Or style .answerBox in CSS
-          answerContainer.appendChild(...answers);
+          answerContainer.style.display = 'flex';                                //Or style .answerBox in CSS
+          //answerContainer.appendChild(...answers);
+
+    let button = [];
+    for(let i = 0; i < answers.length; i++) {
+      button[i] = document.createElement('button');
+      button[i].innerHTML = answers[i];
+      answerContainer.append(button[i]);
+    }
+
+    console.log(answerContainer);
 }
 
 function createBotBox(parentElement) {
@@ -29,12 +40,12 @@ function greeting(parentElement) {
     const greetingText = document.createTextNode(`Witam Ciebie, drogi użytkowniku. Czy zechciałbyś podzielić się
     swoim imieniem, nim zaczniemy ?`);
 
-    const answers = [];
+    const answers = ['Tak', 'Nie'];
 
-    parentElement.appendChild(divElement);
-    divElement.appendChild(paragraph);
-    paragraph.appendChild(greetingText);
-    createAnswerBox(answers);
+    parentElement.append(divElement);
+    divElement.append(paragraph);
     divElement.classList.add('greeting');
+    paragraph.append(greetingText);
+    createAnswerBox(answers);
 
 }
