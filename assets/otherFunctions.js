@@ -1,19 +1,44 @@
-function createAnswerBox(...answers) {
+function askName(parentElement, name) {
+  /* Create text input form for the User Name, then returns it */
+
+  const nameForm = document.createElement('form');
+        nameForm.classList.add('nameForm');
+
+  const nameLabel = document.createElement('label');
+        nameLabel.innerHTML = 'Wpisz zatem swoję imię poniżej, proszę:';
+        nameLabel.setAttribute('for', 'imie');
+
+  const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.name = 'imie';
+        nameInput.id   = 'imie';
+
+  const submitName = document.createElement('button');
+        submitName.innerHTML = 'Oto moje imię';
+        submitName.addEventListener('click', function(e) {
+          e.preventDefault();                 //this prevents the form to submit form, which is default action, so we can stay at the same page after Name submit
+          name = nameInput.value;
+        }, false);
+
+  nameForm.append(nameLabel, nameInput, submitName);
+  parentElement.append(nameForm);
+
+}
+
+function createAnswerBox(answers) {
     /* Creates a FlexBox Container with Answer Buttons */
 
     const answerContainer = document.createElement('div');
           answerContainer.classList.add('answerBox');
           answerContainer.style.display = 'flex';                                //Or style .answerBox in CSS
-          //answerContainer.appendChild(...answers);
 
-    let button = [];
     for(let i = 0; i < answers.length; i++) {
-      button[i] = document.createElement('button');
-      button[i].innerHTML = answers[i];
-      answerContainer.append(button[i]);
+      let button = document.createElement('button');
+          button.innerHTML = answers[i];
+          answerContainer.append(button);
     }
 
-    console.log(answerContainer);
+    return answerContainer;
 }
 
 function createBotBox(parentElement) {
@@ -43,9 +68,9 @@ function greeting(parentElement) {
     const answers = ['Tak', 'Nie'];
 
     parentElement.append(divElement);
-    divElement.append(paragraph);
     divElement.classList.add('greeting');
+    divElement.append(paragraph);
     paragraph.append(greetingText);
-    createAnswerBox(answers);
+    divElement.append(createAnswerBox(answers));
 
 }
