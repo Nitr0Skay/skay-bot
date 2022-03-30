@@ -15,7 +15,8 @@
         } else if(e.target.innerHTML === 'Nie') {
           name = Gall;
         }
-
-      //  this.removeEventListener('click');
-      }, false);
+      }, {
+        // This part will remove this Event Listener after the first invocation
+        once: true
+      },false);
 })();
