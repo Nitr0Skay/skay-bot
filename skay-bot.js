@@ -1,6 +1,7 @@
 (function() {
   const botBox = createBotBox(document.body);
   const Gall = 'Anonim';
+  const botName = 'Skay Bot';
 
   let name = '';
   let mail = '';

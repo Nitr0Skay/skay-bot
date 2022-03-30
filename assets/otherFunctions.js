@@ -61,9 +61,10 @@ function greeting(parentElement) {
     /* https://en.wikipedia.org/wiki/Gallus_Anonymus */
 
     const divElement = document.createElement('div');
-    const paragraph = document.createElement('p');
-    const greetingText = document.createTextNode(`Witam Ciebie, drogi użytkowniku. Czy zechciałbyś podzielić się
-    swoim imieniem, nim zaczniemy ?`);
+    let paragraph = document.createElement('p');
+    const greetingText = 'Witam Ciebie, drogi użytkowniku.';
+    const selfIntroduction = 'Jestem Skay Bot. Twój osobisty Chat Bot';
+    const content = 'Czy zechciałbyś podzielić się swoim imieniem, nim zaczniemy ?';
 
     const answers = ['Tak', 'Nie'];
 
@@ -71,6 +72,25 @@ function greeting(parentElement) {
     divElement.classList.add('greeting');
     divElement.append(paragraph);
     paragraph.append(greetingText);
+    paragraph = document.createElement('p');
+    divElement.append(paragraph);
+    paragraph.append(selfIntroduction);
+    saySomething(content, divElement);
     divElement.append(createAnswerBox(answers));
 
+}
+
+function saySomething(content, parentElement) {
+    const botElement = document.createElement('b');
+          botElement.classList.add('botName');
+          botElement.innerHTML = 'Skay Bot: ';
+
+    const botMessage = document.createElement('p');
+          botMessage.classList.add('botMessage');
+          botMessage.innerHTML = content;
+          botMessage.style.display = 'inline-block';                              //Or style .botMessage in CSS
+
+    const container = document.createElement('aside');
+          container.append(botElement, botMessage);
+          parentElement.append(container);
 }
