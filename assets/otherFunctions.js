@@ -1,19 +1,44 @@
-function createAnswerBox(...answers) {
+function askName(parentElement, name) {
+  /* Create text input form for the User Name, then returns it */
+
+  const nameForm = document.createElement('form');
+        nameForm.classList.add('nameForm');
+
+  const nameLabel = document.createElement('label');
+        nameLabel.innerHTML = 'Wpisz zatem swoję imię poniżej, proszę:';
+        nameLabel.setAttribute('for', 'imie');
+
+  const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.name = 'imie';
+        nameInput.id   = 'imie';
+
+  const submitName = document.createElement('button');
+        submitName.innerHTML = 'Oto moje imię';
+        submitName.addEventListener('click', function(e) {
+          e.preventDefault();                 //this prevents the form to submit form, which is default action, so we can stay at the same page after Name submit
+          name = nameInput.value;
+        }, false);
+
+  nameForm.append(nameLabel, nameInput, submitName);
+  parentElement.append(nameForm);
+
+}
+
+function createAnswerBox(answers) {
     /* Creates a FlexBox Container with Answer Buttons */
 
     const answerContainer = document.createElement('div');
           answerContainer.classList.add('answerBox');
           answerContainer.style.display = 'flex';                                //Or style .answerBox in CSS
-          //answerContainer.appendChild(...answers);
 
-    let button = [];
     for(let i = 0; i < answers.length; i++) {
-      button[i] = document.createElement('button');
-      button[i].innerHTML = answers[i];
-      answerContainer.append(button[i]);
+      let button = document.createElement('button');
+          button.innerHTML = answers[i];
+          answerContainer.append(button);
     }
 
-    console.log(answerContainer);
+    return answerContainer;
 }
 
 function createBotBox(parentElement) {
@@ -36,16 +61,36 @@ function greeting(parentElement) {
     /* https://en.wikipedia.org/wiki/Gallus_Anonymus */
 
     const divElement = document.createElement('div');
-    const paragraph = document.createElement('p');
-    const greetingText = document.createTextNode(`Witam Ciebie, drogi użytkowniku. Czy zechciałbyś podzielić się
-    swoim imieniem, nim zaczniemy ?`);
+    let paragraph = document.createElement('p');
+    const greetingText = 'Witam Ciebie, drogi użytkowniku.';
+    const selfIntroduction = 'Jestem Skay Bot. Twój osobisty Chat Bot';
+    const content = 'Czy zechciałbyś podzielić się swoim imieniem, nim zaczniemy ?';
 
     const answers = ['Tak', 'Nie'];
 
     parentElement.append(divElement);
-    divElement.append(paragraph);
     divElement.classList.add('greeting');
+    divElement.append(paragraph);
     paragraph.append(greetingText);
-    createAnswerBox(answers);
+    paragraph = document.createElement('p');
+    divElement.append(paragraph);
+    paragraph.append(selfIntroduction);
+    saySomething(content, divElement);
+    divElement.append(createAnswerBox(answers));
 
+}
+
+function saySomething(content, parentElement) {
+    const botElement = document.createElement('b');
+          botElement.classList.add('botName');
+          botElement.innerHTML = 'Skay Bot: ';
+
+    const botMessage = document.createElement('p');
+          botMessage.classList.add('botMessage');
+          botMessage.innerHTML = content;
+          botMessage.style.display = 'inline-block';                              //Or style .botMessage in CSS
+
+    const container = document.createElement('aside');
+          container.append(botElement, botMessage);
+          parentElement.append(container);
 }
