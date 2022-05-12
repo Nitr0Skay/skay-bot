@@ -27,11 +27,12 @@
     answerBox[0].addEventListener('click', function(e) {
       if(e.target.innerHTML === 'Tak') {
         name = askName(e.target.parentElement, this);
+        console.log(name);
       } else if(e.target.innerHTML === 'Nie') {
         name = Gall;
         this.remove();
       }
-      resolve();
+      resolve(name);
     }, {
       // addEventListener Options
       // This part will remove this Event Listener after the first invocation
@@ -40,8 +41,8 @@
     });
   });
 
-  promise.then(() => {
-    saySomething(('Imię: ' + name), botBox);
+  promise.then((name) => {
+    saySomething(('Imię to ' + name), botBox);
   });
 
 })();

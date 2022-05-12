@@ -1,7 +1,6 @@
 function askName(parentElement, removeElement) {
   /* Create text input form for the User Name, then returns it */
 
-  let name = '';
   const nameForm = document.createElement('form');
         nameForm.classList.add('nameForm');
 
@@ -20,7 +19,7 @@ function askName(parentElement, removeElement) {
         submitName.addEventListener('click', function(e) {
           e.preventDefault();                 //this prevents the form to submit form, which is default action, so we can stay at the same page after Name submit
           removeElement.remove();
-          return nameInput.value;
+          return Promise.resolve(nameInput.value);
       }, false);
 
         nameForm.append(nameLabel, nameInput, submitName);
