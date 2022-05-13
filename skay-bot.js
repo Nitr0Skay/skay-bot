@@ -3,7 +3,8 @@
     this.name = 'Skay',
     this.surname = 'Bot',
     this.separator = '-'
+
   }
 
-  
+
 //})();

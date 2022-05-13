@@ -15,6 +15,22 @@ Bot.prototype.saySomething = function(content, parentElement){
         return this;
 };
 
+Bot.prototype.createAnswerBox = function(answers) {
+    /* Creates a FlexBox Container with Answer Buttons */
+
+    const answerContainer = document.createElement('div');
+          answerContainer.classList.add('answerBox');
+          answerContainer.style.display = 'flex';                                //Or style .answerBox in CSS
+
+    for(let i = 0; i < answers.length; i++) {
+      let button = document.createElement('button');
+          button.innerHTML = answers[i];
+          answerContainer.append(button);
+    }
+
+    return answerContainer;
+};
+
 Bot.prototype.createChatBox = function(parentElement) {
   /* Creates the Box element where the Bot has something to Say */
 
@@ -41,6 +57,7 @@ Bot.prototype.greeting = function(parentElement) {
     const content = 'Czy zechciałbyś podzielić się swoim imieniem, nim zaczniemy ?';
 
     const answers = ['Tak', 'Nie'];
+    this.answerBox = this.createAnswerBox(answers);
 
     parentElement.append(divElement);
     divElement.classList.add('greeting');
@@ -50,5 +67,36 @@ Bot.prototype.greeting = function(parentElement) {
     divElement.append(paragraph);
     paragraph.append(selfIntroduction);
     this.saySomething(content, divElement);
-    divElement.append(createAnswerBox(answers));
+    divElement.append(this.answerBox);
+
+    return this;
+};
+
+Bot.prototype.askName = function(parentElement, removeElement) {
+  /* Create text input form for the User Name, then returns it */
+
+  const nameForm = document.createElement('form');
+        nameForm.classList.add('nameForm');
+
+  const nameLabel = document.createElement('label');
+        nameLabel.innerHTML = 'Wpisz zatem swoję imię poniżej, proszę:';
+        nameLabel.setAttribute('for', 'imie');
+
+  const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.name = 'imie';
+        nameInput.id   = 'imie';
+
+  const submitName = document.createElement('button');
+        submitName.innerHTML = 'Oto moje imię';
+        submitName.id = 'submitName';
+        submitName.addEventListener('click', function(e) {
+          e.preventDefault();               //this prevents the form to submit form, which is default action, so we can stay at the same page after Name submit
+          removeElement.remove();
+          this.userName = nameInput.value;
+          
+      }, false);
+
+        nameForm.append(nameLabel, nameInput, submitName);
+        parentElement.append(nameForm);
 };
