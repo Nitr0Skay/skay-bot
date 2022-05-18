@@ -1,3 +1,10 @@
+const Bot = function() {
+  this.name = 'Skay',
+  this.surname = 'Bot',
+  this.separator = '-'
+
+};
+
 Bot.prototype.saySomething = function(content, parentElement){
   const botElement = document.createElement('b');
         botElement.classList.add('botName');
@@ -94,7 +101,7 @@ Bot.prototype.askName = function(parentElement, removeElement) {
           e.preventDefault();               //this prevents the form to submit form, which is default action, so we can stay at the same page after Name submit
           removeElement.remove();
           this.userName = nameInput.value;
-          
+
       }, false);
 
         nameForm.append(nameLabel, nameInput, submitName);

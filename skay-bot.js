@@ -1,10 +1,5 @@
-//(function() {
-  const Bot = function() {
-    this.name = 'Skay',
-    this.surname = 'Bot',
-    this.separator = '-'
-
-  }
+(function() {
+  const Skay = new Bot();
 
 
-//})();
+})();
