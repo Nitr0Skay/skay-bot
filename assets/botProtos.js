@@ -1,5 +1,5 @@
-const Bot = function() {
-  this.name = 'Skay',
+const Bot = function(name) {
+  this.name = name,
   this.surname = 'Bot',
   this.separator = '-'
 
@@ -97,12 +97,12 @@ Bot.prototype.askName = function(parentElement, removeElement) {
   const submitName = document.createElement('button');
         submitName.innerHTML = 'Oto moje imię';
         submitName.id = 'submitName';
-        submitName.addEventListener('click', function(e) {
-          e.preventDefault();               //this prevents the form to submit form, which is default action, so we can stay at the same page after Name submit
-          removeElement.remove();
-          this.userName = nameInput.value;
+      //   submitName.addEventListener('click', function(e) {
+      //     e.preventDefault();               //this prevents the form to submit form, which is default action, so we can stay at the same page after Name submit
+      //     removeElement.remove();
+      //     return nameInput.value; 
 
-      }, false);
+      // }, false);
 
         nameForm.append(nameLabel, nameInput, submitName);
         parentElement.append(nameForm);
