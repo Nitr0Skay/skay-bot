@@ -1,8 +1,11 @@
-const Bot = function(name) {
-  this.name = name,
+const User = function(name) {
+  this.name = new String(name);
+};
+
+const Bot = function(...args) {
+  User.apply(this, args);
   this.surname = 'Bot',
   this.separator = '-'
-
 };
 
 Bot.prototype.saySomething = function(content, parentElement){
@@ -100,7 +103,7 @@ Bot.prototype.askName = function(parentElement, removeElement) {
       //   submitName.addEventListener('click', function(e) {
       //     e.preventDefault();               //this prevents the form to submit form, which is default action, so we can stay at the same page after Name submit
       //     removeElement.remove();
-      //     return nameInput.value; 
+      //     return nameInput.value;
 
       // }, false);
 
