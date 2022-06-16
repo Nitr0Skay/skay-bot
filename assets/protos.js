@@ -54,6 +54,20 @@ Bot.prototype.createChatBox = function(parentElement) {
   return document.getElementById(botBox.id);
 };
 
+Bot.prototype.createHelpList = function(parentElement) {
+  /* Creates the list of links for User to help him navigate and find him content what he look for */
+
+  fetch('./assets/helpContent.json')
+    .then(response => response.json())
+    .then(json => console.log(json));
+
+  console.log();
+
+  // const contentList = document.createElement('dl');
+  //       contentList.setAttribute('id', 'helpList');
+  //       contentList.setAttribute('class', 'helpList');
+};
+
 Bot.prototype.greeting = function(parentElement) {
     /* Greeting the user and asking for permission to ask the name */
     /* If user accept, then activate function askName to get the User's name */
