@@ -59,13 +59,25 @@ Bot.prototype.createHelpList = function(parentElement) {
 
   fetch('./assets/helpContent.json')
     .then(response => response.json())
-    .then(json => console.log(json));
+    .then(json => {
+      const contentList = document.createElement('dl');
+            contentList.setAttribute('id', 'helpList');
+            contentList.setAttribute('class', 'helpList');
 
-  console.log();
+      for(const property in json) {
+        const listElement = document.createElement('dt');
+              listElement.append(property);
 
-  // const contentList = document.createElement('dl');
-  //       contentList.setAttribute('id', 'helpList');
-  //       contentList.setAttribute('class', 'helpList');
+        contentList.append(listElement);
+        json[property].forEach(definition => {
+          const dd = document.createElement('dd');
+                dd.append(definition);
+
+          contentList.append(dd);
+        });
+      }
+      parentElement.append(contentList);
+    });
 };
 
 Bot.prototype.greeting = function(parentElement) {
