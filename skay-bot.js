@@ -1,5 +1,9 @@
-(function() {
+//(function() {
+  import { Bot } from './assets/botInstance.js';
+  import { User } from './assets/userInstance.js';
+
   const Skay = new Bot('Skay');
+  console.log(Skay);
   const Gall = new String('Anonim');
   const botBox = Skay.createChatBox(document.body);
 
@@ -32,4 +36,4 @@
     Skay.saySomething(new String('Poniżej podam listę pomocnych linków:'), botBox);
     Skay.createHelpList(botBox);
   });
-})();
+//})();
