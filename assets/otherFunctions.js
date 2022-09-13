@@ -1,4 +1,4 @@
-function askName(parentElement, name) {
+function askName(parentElement, removeElement) {
   /* Create text input form for the User Name, then returns it */
 
   const nameForm = document.createElement('form');
@@ -15,14 +15,15 @@ function askName(parentElement, name) {
 
   const submitName = document.createElement('button');
         submitName.innerHTML = 'Oto moje imię';
+        submitName.id = 'submitName';
         submitName.addEventListener('click', function(e) {
           e.preventDefault();                 //this prevents the form to submit form, which is default action, so we can stay at the same page after Name submit
-          name = nameInput.value;
-        }, false);
+          removeElement.remove();
+          return Promise.resolve(nameInput.value);
+      }, false);
 
-  nameForm.append(nameLabel, nameInput, submitName);
-  parentElement.append(nameForm);
-
+        nameForm.append(nameLabel, nameInput, submitName);
+        parentElement.append(nameForm);
 }
 
 function createAnswerBox(answers) {
@@ -44,7 +45,7 @@ function createAnswerBox(answers) {
 function createBotBox(parentElement) {
     /* Creates the Box element where the Bot has something to Say */
 
-    const botBox = document.createElement('div');
+    const botBox = document.createElement('aside');
           botBox.setAttribute('class', 'botBox');
           botBox.setAttribute('id', 'botBox');
 
@@ -77,7 +78,6 @@ function greeting(parentElement) {
     paragraph.append(selfIntroduction);
     saySomething(content, divElement);
     divElement.append(createAnswerBox(answers));
-
 }
 
 function saySomething(content, parentElement) {
@@ -90,7 +90,7 @@ function saySomething(content, parentElement) {
           botMessage.innerHTML = content;
           botMessage.style.display = 'inline-block';                              //Or style .botMessage in CSS
 
-    const container = document.createElement('aside');
+    const container = document.createElement('div');
           container.append(botElement, botMessage);
           parentElement.append(container);
 }
