@@ -54,30 +54,35 @@ Bot.prototype.createChatBox = function(parentElement) {
   return document.getElementById(botBox.id);
 };
 
-Bot.prototype.createHelpList = function(parentElement) {
-  /* Creates the list of links for User to help him navigate and find him content what he look for */
+Bot.prototype.createHelpList = async function(parentElement) {
 
-  fetch('./assets/helpContent.json')
-    .then(response => response.json())
-    .then(json => {
-      const contentList = document.createElement('dl');
-            contentList.setAttribute('id', 'helpList');
-            contentList.setAttribute('class', 'helpList');
+  let helpContent = await fetch('./assets/helpContent.json');
+      helpContent = await helpContent.json();
 
-      for(const property in json) {
-        const listElement = document.createElement('dt');
-              listElement.append(property);
+  const contentList = document.createElement('dl');
+        contentList.setAttribute('id', 'helpList');
+        contentList.setAttribute('class', 'helpList');
 
-        contentList.append(listElement);
-        json[property].forEach(definition => {
-          const dd = document.createElement('dd');
-                dd.append(definition);
+    for (prop in helpContent) {
+      await sleep(500);
+      //helpContent[prop];
 
-          contentList.append(dd);
-        });
+      const listElement = document.createElement('dt');
+            listElement.append(prop);
+      let dd = document.createElement('dd');
+
+      contentList.append(listElement);
+
+      for(let i = 0; i < helpContent[prop].length; i++) {
+        await sleep(200);
+        //helpContent[prop][i];
+
+        dd.append(helpContent[prop][i]);
+        contentList.append(dd);
+        dd = document.createElement('dd');
+        parentElement.append(contentList);
       }
-      parentElement.append(contentList);
-    });
+    }
 };
 
 Bot.prototype.greeting = function(parentElement) {

@@ -15,3 +15,7 @@ const EventHandler = function(element, event, callback, options) {
     };
   }
 };
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
