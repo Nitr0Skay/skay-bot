@@ -8,7 +8,7 @@ const Bot = function(...args) {
   this.separator = '-'
 };
 
-Bot.prototype.saySomething = function(content, parentElement){
+Bot.prototype.saySomething = async function(content, parentElement) {
   const botElement = document.createElement('b');
         botElement.classList.add('botName');
         botElement.innerHTML = this.name + this.separator + this.surname;
@@ -20,9 +20,11 @@ Bot.prototype.saySomething = function(content, parentElement){
 
   const container = document.createElement('div');
         container.append(botElement, botMessage);
-        parentElement.append(container);
 
-        return this;
+  await sleep(500);
+  await parentElement.append(container);
+
+  return this;
 };
 
 Bot.prototype.createAnswerBox = function(answers) {
@@ -64,7 +66,7 @@ Bot.prototype.createHelpList = async function(parentElement) {
         contentList.setAttribute('class', 'helpList');
 
     for (prop in helpContent) {
-      await sleep(500);
+      await sleep(800);
       //helpContent[prop];
 
       const listElement = document.createElement('dt');
@@ -81,11 +83,12 @@ Bot.prototype.createHelpList = async function(parentElement) {
         contentList.append(dd);
         dd = document.createElement('dd');
         parentElement.append(contentList);
+        await sleep(200);
       }
     }
 };
 
-Bot.prototype.greeting = function(parentElement) {
+Bot.prototype.greeting = async function(parentElement) {
     /* Greeting the user and asking for permission to ask the name */
     /* If user accept, then activate function askName to get the User's name */
     /* If not, then use Gall Variable of Anonim Value xD */
@@ -107,7 +110,7 @@ Bot.prototype.greeting = function(parentElement) {
     paragraph = document.createElement('p');
     divElement.append(paragraph);
     paragraph.append(selfIntroduction);
-    this.saySomething(content, divElement);
+    await this.saySomething(content, divElement);
     divElement.append(this.answerBox);
 
     return this;
