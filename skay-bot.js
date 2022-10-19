@@ -25,10 +25,13 @@
 
   promise.then(async (name) => {
     const user = new User(name);
+    const userContener = document.createElement(`u`);
+          userContener.classList.add('userName');
+          userContener.innerHTML = user.name;
 
     await Skay.answerBox.remove();
-    await Skay.saySomething(new String(`Bardzo mi miło Ciebie poznać, panie`), botBox);
-    await Skay.saySomething(new String(`Jak mogę Tobie pomóc ? :D`), botBox);
+    await Skay.saySomething(new String(`Bardzo mi miło Ciebie poznać, panie `), botBox, userContener);
+    await Skay.saySomething(new String(`Jak mogę Panu pomóc ? :D`), botBox);
     await Skay.saySomething(new String(`Poniżej podam listę pomocnych linków:`), botBox);
     await Skay.createHelpList(botBox);
   });

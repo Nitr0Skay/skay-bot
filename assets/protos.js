@@ -18,6 +18,8 @@ Bot.prototype.saySomething = async function(content, parentElement) {
         botMessage.innerHTML = content;
         botMessage.style.display = 'inline-block';                              //Or style .botMessage in CSS
 
+  if(arguments[2]) botMessage.append(arguments[2]);
+
   const container = document.createElement('div');
         container.append(botElement, botMessage);
 
