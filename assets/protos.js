@@ -16,7 +16,6 @@ Bot.prototype.saySomething = async function(content, parentElement) {
   const botMessage = document.createElement('p');
         botMessage.classList.add('botMessage');
         botMessage.innerHTML = content;
-        botMessage.style.display = 'inline-block';                              //Or style .botMessage in CSS
 
   if(arguments[2]) botMessage.append(arguments[2]);
 
@@ -99,7 +98,7 @@ Bot.prototype.greeting = async function(parentElement) {
     const divElement = document.createElement('div');
     let paragraph = document.createElement('p');
     const greetingText = 'Witam Ciebie, drogi użytkowniku.';
-    const selfIntroduction = 'Jestem Skay Bot. Twój osobisty Chat Bot';
+    const selfIntroduction = 'Jestem Skay Bot, Twój osobisty Chat Bot';
     const content = 'Czy zechciałbyś podzielić się swoim imieniem, nim zaczniemy ?';
 
     const answers = ['Tak', 'Nie'];
@@ -112,6 +111,7 @@ Bot.prototype.greeting = async function(parentElement) {
     paragraph = document.createElement('p');
     divElement.append(paragraph);
     paragraph.append(selfIntroduction);
+    await this.saySomething('Jestem tu, aby Tobie pomóc.', divElement);
     await this.saySomething(content, divElement);
     divElement.append(this.answerBox);
 
