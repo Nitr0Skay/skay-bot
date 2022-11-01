@@ -54,6 +54,20 @@ Bot.prototype.createChatBox = function(parentElement) {
   const container = parentElement;
         container.prepend(botBox);
 
+  const drag = (e) => {
+    botBox.style.top = e.pageY + 'px';
+    botBox.style.left = e.pageX + 'px';
+  };
+
+  EventHandler(botBox, 'mousedown', () => {
+    // EventHandler(window, 'mousemove', drag);
+    window.addEventListener('mousemove', drag);
+  });
+
+  EventHandler(window, 'mouseup', () => {
+    window.removeEventListener('mousemove', drag);
+  });
+
   return document.getElementById(botBox.id);
 };
 
