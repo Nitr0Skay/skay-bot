@@ -75,28 +75,33 @@ Bot.prototype.createHelpList = async function(parentElement) {
 
   let helpContent = await fetch('./assets/helpContent.json');
       helpContent = await helpContent.json();
-
   const contentList = document.createElement('dl');
         contentList.setAttribute('id', 'helpList');
         contentList.setAttribute('class', 'helpList');
 
-    for (prop in helpContent) {
+    for (term in helpContent) {
       await sleep(800);
       //helpContent[prop];
 
+      const description = helpContent[term][0]
+      const href = helpContent[term][1][0];
+      const anchor = helpContent[term][1][1];
       const listElement = document.createElement('dt');
-            listElement.append(prop);
-      let dd = document.createElement('dd');
+            listElement.append(term);
 
       contentList.append(listElement);
 
-      for(let i = 0; i < helpContent[prop].length; i++) {
+      for(let i = 0, a = document.createElement(`a`), dd = document.createElement('dd'); i < helpContent[term].length; i++) {
         await sleep(200);
         //helpContent[prop][i];
 
-        dd.append(helpContent[prop][i]);
-        contentList.append(dd);
+        dd.append(description);
+        a.href = href;
+        a.innerHTML = anchor;
+        a.setAttribute('target', '_blank');
         dd = document.createElement('dd');
+        dd.append(a);
+        contentList.append(dd);
         parentElement.append(contentList);
         await sleep(200);
       }

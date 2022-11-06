@@ -1,31 +1,31 @@
 {
   "Pozycjonowanie": [
     "Jest to sztuka polegająca na manipulowaniu zawartością strony w sposób przyjazny dla wyszukiwarek. Działanie to ma na celu uzyskanie jak najwyższej pozycji w wyszukiwarkach w myśl zasady: \"Im wyżej będziesz, tym szybciej ktoś Cię zauważy. Celuj więc wysoko \"",
-    "Miejsce na link do do dokładniejszego opisu bądź do samej usługi"
+    ["#", "Miejsce na link do do dokładniejszego opisu bądź do samej usługi"]
   ],
 
   "Zarządzanie reklamą adWords": [
     "Reklamy adWords to sponsorowany system reklamowy firmy Google umożliwiający wyświetlanie w wynikach wyszukiwania specjalnych linków sponsorowanych",
-    "https://ads-center.net/15,adwords"
+    ["https://ads-center.net/15,adwords", "https://ads-center.net/15,adwords"]
   ],
 
   "Budowa strony internetowej": [
     "Strona internetowa to wyodrębniona część, obszar internetu poświęcony danej tematyce. W zależności od złożoności, jej budowa może być prosta, lub nieco bardziej wymagająca - zwłaszcza dla początkujących",
-    "Miejsce na link do do dokładniejszego opisu bądź do samej usługi"
+    ["#", "Miejsce na link do do dokładniejszego opisu bądź do samej usługi"]
   ],
 
   "Zakup linków dofollow": [
     "Atrybut dofollow nakazuje robotom internetowym odwiedziny na stronie, do której prowadzi dany link",
-    "Miejsce na link do do dokładniejszego opisu bądź do samej usługi"
+    ["#", "Miejsce na link do do dokładniejszego opisu bądź do samej usługi"]
   ],
 
   "Reklamacje": [
     "Nie zawsze jakość danego towaru, bądź usługi jest dla nas zadowalająca. Po to też jest opcja Reklamacji. Proszę, nie krępuj się zareklamować, gdy poziom naszych usług jest dla Ciebie niewystarczający",
-    "Miejsce na link do do dokładniejszego opisu bądź do samej usługi"
+    ["#", "Miejsce na link do do dokładniejszego opisu bądź do samej usługi"]
   ],
 
   "Pomoc": [
     "Potrzebujesz pomocy innej, niż wyżej wymienione ? Proszę, skontaktuj się z nami",
-    "https://ads-center.net/kontakt"
+    ["https://ads-center.net/kontakt", "https://ads-center.net/kontakt"]
   ]
 }
