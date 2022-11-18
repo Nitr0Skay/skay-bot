@@ -114,8 +114,8 @@ Bot.prototype.greeting = async function(parentElement) {
     /* If not, then use Gall Variable of Anonim Value xD */
     /* https://en.wikipedia.org/wiki/Gallus_Anonymus */
 
-    const divElement = document.createElement(`div`);
     let paragraph = document.createElement(`p`);
+    const divElement = document.createElement(`div`);
     const greetingText = `Witam Ciebie, drogi użytkowniku.`;
     const selfIntroduction = `Jestem Skay Bot, Twój osobisty Chat Bot`;
     const content = `Czy zechciałbyś podzielić się swoim imieniem, nim zaczniemy ?`;
