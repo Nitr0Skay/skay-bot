@@ -1,3 +1,6 @@
+import { EventHandler, sleep } from './assets/EventHandler.js';
+import { Bot, User } from './assets/protos.js';
+
 (function() {
   //  Phase 1  - Initialize
   const Skay = new Bot(`Skay`);

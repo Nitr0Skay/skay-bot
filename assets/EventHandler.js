@@ -1,4 +1,4 @@
-const EventHandler = function(element, event, callback, options) {
+export const EventHandler = function(element, event, callback, options) {
   if(addEventListener) {
     element.addEventListener(event, function(e) {
       callback.call(this, e || window.event);
@@ -16,6 +16,6 @@ const EventHandler = function(element, event, callback, options) {
   }
 };
 
-function sleep(ms) {
+export function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }

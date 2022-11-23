@@ -1,8 +1,10 @@
-const User = function(name) {
+import { EventHandler, sleep } from  './EventHandler.js';
+
+export const User = function(name) {
   this.name = new String(name);
 };
 
-const Bot = function(...args) {
+export const Bot = function(...args) {
   User.apply(this, args);
   this.surname = `Bot`,
   this.separator = `-`
@@ -75,11 +77,12 @@ Bot.prototype.createHelpList = async function(parentElement) {
 
   let helpContent = await fetch(`./assets/helpContent.json`);
       helpContent = await helpContent.json();
+      
   const contentList = document.createElement(`dl`);
         contentList.setAttribute(`id`, `helpList`);
         contentList.setAttribute(`class`, `helpList`);
 
-    for (term in helpContent) {
+    for (let term in helpContent) {
       await sleep(800);
       //helpContent[prop];
 
