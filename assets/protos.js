@@ -140,6 +140,13 @@ Bot.prototype.greeting = async function(parentElement) {
     return this;
 };
 
+Bot.prototype.sendHelp = async function(parentElement) {
+      // Parent Element is basicly where that Help will be send;
+      this.saySomething(new String(`Jak mogę Panu pomóc ? :D`), parentElement);
+      this.saySomething(new String(`Poniżej podam listę pomocnych linków:`), parentElement);
+      this.createHelpList(parentElement);
+};
+
 // Bot.prototype.askName = function(parentElement, removeElement) {
 //   /* Create text input form for the User Name, then returns it */
 //

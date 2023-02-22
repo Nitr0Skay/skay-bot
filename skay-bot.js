@@ -45,7 +45,7 @@ import { Bot, User } from './assets/protos.js';
       await Skay.saySomething(new String(`Czy zapiszesz się na nasz newsletter ? Wystarczy tylko podać adres e-mail`), botBox);
       Skay.answerBox = Skay.createAnswerBox(answerSet);
       botBox.append(Skay.answerBox);
-        const p = new Promise((resolve, reject) => {
+        const askAboutMail = new Promise((resolve, reject) => {
         EventHandler(Skay.answerBox, `click`, function(e) {
           Skay.askAbout(e.target.parentElement, `mail`, Skay.answerBox);
 
@@ -64,15 +64,13 @@ import { Bot, User } from './assets/protos.js';
           });
         });
 
-        p.then(async (mail) => { console.log(mail);
+        askAboutMail.then(async (mail) => { console.log(mail);
           await Skay.answerBox.remove();
           await Skay.saySomething(new String(`Dziękujemy za zaufanie, panie `), botBox, userContener);
         });
   }
 
-  await Skay.saySomething(new String(`Jak mogę Panu pomóc ? :D`), botBox);
-  await Skay.saySomething(new String(`Poniżej podam listę pomocnych linków:`), botBox);
-  await Skay.createHelpList(botBox);
+  await Skay.sendHelp(botBox);
 });
 
 })();
