@@ -196,3 +196,29 @@ Bot.prototype.askAbout = async function(parentElement, question, answers) {
         questionForm.append(questionLabel, answerInput, submitAnswer);
         parentElement.append(questionForm);
 }
+
+Bot.prototype.getTheUserName = async function() {
+      return new Promise((resolve, reject) => {
+            //  Phase 2  -  Getting the Name
+
+            // Initializing the context of this - we need that later in the Event Handler
+            const Skay = this;
+
+            EventHandler(Skay.answerBox, `click`, function(e) {
+              const clickedButton = e.target;                    
+              if(clickedButton.innerHTML === `Tak`) {
+                  Skay.askAbout(clickedButton.parentElement, `name`, Skay.answerBox);
+                  const nameSubmitButton = document.getElementById(`submitButton`);
+                  EventHandler(nameSubmitButton, `click`, function(e) {
+                    e.preventDefault();
+                    resolve(document.getElementById(`name`).value);
+                  }, false);
+                } else if(e.target.innerHTML === `Nie`) {
+                  resolve(Gall);
+                }
+              }, {
+                useCapture: false,
+                once: true
+              });
+          });
+}

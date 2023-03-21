@@ -9,28 +9,9 @@ import { Bot, User } from './assets/protos.js';
   let answerSet = null;
 
   Skay.greeting(botBox);
-  const promise = new Promise((resolve, reject) => {
-    //  Phase 2  -  Getting the Name
+  const getTheName = Skay.getTheUserName(Skay.answerBox);
 
-    EventHandler(Skay.answerBox, `click`, function(e) {
-
-      if(e.target.innerHTML === `Tak`) {
-          Skay.askAbout(e.target.parentElement, `name`, Skay.answerBox);
-          const nameSubmitButton = document.getElementById(`submitButton`);
-          EventHandler(nameSubmitButton, `click`, function(e) {
-            e.preventDefault();
-            resolve(document.getElementById(`name`).value);
-          }, false);
-        } else if(e.target.innerHTML === `Nie`) {
-          resolve(Gall);
-        }
-      }, {
-        useCapture: false,
-        once: true
-      });
-  });
-
-  promise.then(async (name) => {
+  getTheName.then(async (name) => {
     //  Phase 3  -  Rendering the Help List for the User
     const user = new User(name);
     const userContener = document.createElement(`u`);
